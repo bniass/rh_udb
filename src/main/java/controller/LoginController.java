@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import model.Utilisateur;
 import service.IUser;
 import service.UserDAO;
+import utils.LoadView;
 import utils.Md5;
 import utils.Utils;
 
@@ -25,8 +26,7 @@ public class LoginController {
             String password = Md5.crypter(pwdPwf.getText());
             Utilisateur u = iUser.findUser(loginTfd.getText(), password);
             if(u != null){
-                Utils.showMessage("AUTHENTIFICATION", "GESTION DES UTILISATEUES",
-                        "Bienvenu !");
+                LoadView.showView("GESTION DES RESSOURCES HUMAINE","Menu.fxml", 2);
             }
             else{
                 Utils.showMessage("AUTHENTIFICATION", "GESTION DES UTILISATEUES",

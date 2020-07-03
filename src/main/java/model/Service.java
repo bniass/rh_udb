@@ -39,6 +39,11 @@ public class Service implements Serializable {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return libelle;
+    }
+
     public void setId(long id) {
         this.id = id;
     }

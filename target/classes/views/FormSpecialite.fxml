@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SpecialiteController">
+   <children>
+      <Label layoutX="230.0" layoutY="28.0" text="GESTION DES SPECIALITES" />
+      <Label layoutX="73.0" layoutY="78.0" text="Nom specialité :" />
+      <Label layoutX="73.0" layoutY="110.0" text="Service :" />
+      <TextField fx:id="specialiteTfd" layoutX="193.0" layoutY="74.0" prefHeight="25.0" prefWidth="296.0" />
+      <ComboBox fx:id="serviceCbx" layoutX="193.0" layoutY="106.0" prefHeight="25.0" prefWidth="296.0" />
+      <Button fx:id="nouveauBtn" layoutX="69.0" layoutY="153.0" mnemonicParsing="false" onAction="#nouvauHandle" text="NOUVEAU" />
+      <Button fx:id="enregistrerBtn" layoutX="170.0" layoutY="153.0" mnemonicParsing="false" onAction="#saveHandle" text="ENREGISTRER" />
+      <Button fx:id="modifierBtn" layoutX="277.0" layoutY="153.0" mnemonicParsing="false" onAction="#updateHandle" prefHeight="25.0" prefWidth="89.0" text="MODIFIER" />
+      <Button fx:id="supprimerBtn" layoutX="388.0" layoutY="153.0" mnemonicParsing="false" onAction="#deleteHandle" prefHeight="25.0" prefWidth="89.0" text="SUPPRIMER" />
+      <TableView fx:id="specialiteTbv" layoutX="65.0" layoutY="198.0" prefHeight="200.0" prefWidth="513.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="110.0" text="ID" />
+          <TableColumn fx:id="colLibelle" prefWidth="225.0" text="LIBELLE" />
+            <TableColumn fx:id="colService" prefWidth="177.0" text="SERVICE" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
