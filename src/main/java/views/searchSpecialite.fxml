@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.searchSpecialiteController">
+   <children>
+      <Label layoutX="213.0" layoutY="26.0" text="RECHERCHE DE MEDECINS" />
+      <Label layoutX="36.0" layoutY="69.0" text="Service : " />
+      <ComboBox fx:id="serviceCbx" layoutX="100.0" layoutY="65.0" prefHeight="25.0" prefWidth="303.0" />
+      <TableView fx:id="specialiteTbv" layoutX="28.0" layoutY="120.0" prefHeight="200.0" prefWidth="513.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="110.0" text="ID" />
+            <TableColumn fx:id="colLibelle" prefWidth="225.0" text="LIBELLE" />
+            <TableColumn fx:id="colService" prefWidth="177.0" text="SERVICE" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

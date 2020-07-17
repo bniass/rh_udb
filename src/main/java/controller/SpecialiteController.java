@@ -65,17 +65,40 @@ public class SpecialiteController implements Initializable {
         serviceCbx.getSelectionModel().clearSelection();
     }
 
-    @FXML
-    void saveHandle(ActionEvent event) {
-        // controle à faire
+    private boolean verifExiste(){
         if(iParametrage.findSpecialiteByLibelle(specialiteTfd.getText().trim().toLowerCase()) != null){
             Utils.showMessage("GESTION RH","Gestion des spécialité",
                     "Cette specialite existe déjà");
+            return false;
+        }
+        return true;
+    }
+    private boolean verifChamp(){
+        if(specialiteTfd.getText().trim().equals("") ||
+        serviceCbx.getSelectionModel().getSelectedItem() == null){
+            Utils.showMessage("GESTION RH","Gestion des spécialité",
+                    "Tous les champs sont obligatoire");
+            return false;
+        }
+        return true;
+    }
+
+    private void fillData(Specialite specialite){
+        specialite.setLibelle(specialiteTfd.getText().trim().toLowerCase());
+        specialite.setService(serviceCbx.getValue());
+    }
+
+    @FXML
+    void saveHandle(ActionEvent event) {
+        if(!verifChamp()){
             return;
         }
+        // controle à faire
+        if(!verifExiste()){
+           return;
+        }
         Specialite sp = new Specialite();
-        sp.setLibelle(specialiteTfd.getText().trim().toLowerCase());
-        sp.setService(serviceCbx.getValue());
+        fillData(sp);
         try {
             iParametrage.saveSpecialite(sp);
             Utils.showMessage("GESTION RH","Gestion des spécialité",
@@ -92,12 +115,46 @@ public class SpecialiteController implements Initializable {
 
     @FXML
     void updateHandle(ActionEvent event) {
-
+        if(!verifChamp()){
+            return;
+        }
+        // controle à faire
+        if(!verifExiste()){
+            return;
+        }
+        fillData(selectedSpecialite);
+        try {
+            iParametrage.saveSpecialite(selectedSpecialite);
+            Utils.showMessage("GESTION RH","Gestion des spécialité",
+                    "Spécialité modifié !");
+            clear();
+            //specialiteTbv.getItems().add();
+            specialiteTbv.refresh();
+        }
+        catch (Exception e){
+            Utils.showMessage("GESTION RH","Gestion des spécialité",
+                    "Erreur : "+e.getMessage());
+        }
     }
 
     @FXML
     void deleteHandle(ActionEvent event) {
+        if(Utils.confirmMessage("GESTION RH","Gestion des spécialité",
+                "Etes-vous sur de voiloir supprimer la specialité ["+selectedSpecialite.getLibelle()+"]")) {
+            //supprimer la specialite
+            try {
+                iParametrage.deleteSpecialite(selectedSpecialite);
+                Utils.showMessage("GESTION RH","Gestion des spécialité",
+                        "Specialité supprimé !");
+                specialiteTbv.getItems().remove(selectedSpecialite);
+                specialiteTbv.refresh();
+            }
+            catch(Exception e){
+                Utils.showMessage("GESTION RH","Gestion des spécialité",
+                        "Erreur : "+e.getMessage());
+            }
 
+        }
     }
 
     private Specialite selectedSpecialite = null;

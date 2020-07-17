@@ -11,4 +11,10 @@ public class MenuController {
         LoadView.showView("AUTHENTIFICATION","FormSpecialite.fxml", 3);
     }
 
+    @FXML
+    void findHandle(ActionEvent event)throws  Exception {
+        LoadView.showView("AUTHENTIFICATION","searchSpecialite.fxml", 3);
+
+    }
+
 }

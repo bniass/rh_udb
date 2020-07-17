@@ -6,7 +6,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
@@ -14,6 +13,7 @@
           <Menu mnemonicParsing="false" text="Specialite">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#nouvelSpecialiteHandle" text="Nouveau" />
+                  <MenuItem mnemonicParsing="false" onAction="#findHandle" text="Rechercher" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Service">
